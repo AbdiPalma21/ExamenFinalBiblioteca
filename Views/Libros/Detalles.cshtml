@@ -1,0 +1,41 @@
+﻿@model BibliotecaMVC.Models.Libro
+
+@{
+    ViewData["Title"] = "Detalles del libro";
+}
+
+<h1>Detalles del libro</h1>
+
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Portada</dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.Portada))
+            {
+                <img src="@Model.Portada" alt="Portada" style="max-height:200px; max-width:150px;" />
+            }
+        </dd>
+
+        <dt class="col-sm-2">Título</dt>
+        <dd class="col-sm-10">@Model.TituloLibro</dd>
+
+        <dt class="col-sm-2">Autor</dt>
+        <dd class="col-sm-10">@Model.Autor</dd>
+
+        <dt class="col-sm-2">Disponible</dt>
+        <dd class="col-sm-10">@Model.Disponible</dd>
+
+        <dt class="col-sm-2">Fecha de publicación</dt>
+        <dd class="col-sm-10">@Model.FechaDePublicacion.ToShortDateString()</dd>
+
+        <dt class="col-sm-2">Descripción</dt>
+        <dd class="col-sm-10">@Model.DescripcionLibro</dd>
+    </dl>
+</div>
+
+<p>
+    <a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+    <a asp-action="Inicio" class="btn btn-secondary">Volver al listado</a>
+</p>

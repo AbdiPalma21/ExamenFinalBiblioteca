@@ -1,0 +1,65 @@
+﻿@model BibliotecaMVC.Models.Libro
+
+@{
+    ViewData["Title"] = "Registrar libro";
+}
+
+<h1>Registrar libro</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Crear" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="TituloLibro" class="form-label"></label>
+                <input asp-for="TituloLibro" class="form-control" />
+                <span asp-validation-for="TituloLibro" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Autor" class="form-label"></label>
+                <input asp-for="Autor" class="form-control" />
+                <span asp-validation-for="Autor" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Disponible" class="form-label"></label>
+                <select asp-for="Disponible" class="form-select">
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
+                </select>
+                <span asp-validation-for="Disponible" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="FechaDePublicacion" class="form-label"></label>
+                <input asp-for="FechaDePublicacion" class="form-control" />
+                <span asp-validation-for="FechaDePublicacion" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ArchivoPortada" class="form-label">Portada (imagen)</label>
+                <input asp-for="ArchivoPortada" class="form-control" type="file" />
+                <span asp-validation-for="ArchivoPortada" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="DescripcionLibro" class="form-label"></label>
+                <textarea asp-for="DescripcionLibro" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="DescripcionLibro" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-action="Inicio" class="btn btn-secondary">Volver al listado</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
